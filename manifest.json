@@ -1,13 +1,27 @@
 {
-  "background_color": "#e65e5e",
-  "dir": "ltr",
+  "name": "Бурмалдатский переводчик",
+  "short_name": "Бурмалдат",
+  "description": "Переводчик на бурмалдатский язык",
+  "start_url": "/burmaldatranslation/",
   "display": "standalone",
-  "name": "Перевод на бурмалдатский",
-  "orientation": "any",
-  "scope": "/",
-  "short_name": "Перевод на бурмалдатский",
-  "start_url": "/burmaldatranslation",
-  "theme_color": "#000000",
-  "id": "skalh",
-  "description": "переводчик на бурмалдатский с русского и наоборот"
+  "orientation": "portrait",
+  "background_color": "#1a1a2e",
+  "theme_color": "#e94560",
+  "categories": ["productivity", "utilities"],
+  "lang": "ru",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
