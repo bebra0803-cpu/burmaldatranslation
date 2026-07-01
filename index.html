@@ -8,7 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Бурмалдат">
-    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%87%D0%B8%D0%BA%22%2C%22short_name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231a1a2e%22%2C%22theme_color%22%3A%22%23e94560%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20100%20100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'20'%20fill%3D'%231a1a2e'%2F%3E%3Ctext%20x%3D'50'%20y%3D'65'%20font-size%3D'55'%20text-anchor%3D'middle'%20fill%3D'%23e94560'%20font-family%3D'Arial'%3E%D0%91%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22100x100%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%2C%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20512%20512'%3E%3Crect%20width%3D'512'%20height%3D'512'%20rx%3D'100'%20fill%3D'%231a1a2e'%2F%3E%3Ctext%20x%3D'256'%20y%3D'330'%20font-size%3D'280'%20text-anchor%3D'middle'%20fill%3D'%23e94560'%20font-family%3D'Arial'%20font-weight%3D'bold'%3E%D0%91%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+    
+    <!-- ====== ИСПРАВЛЕННАЯ ССЫЛКА НА МАНИФЕСТ ====== -->
+    <link rel="manifest" href="/manifest.json">
     
     <title>Бурмалдатский Переводчик</title>
     
@@ -211,6 +213,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* Кнопка Поменять */
         .btn-reverse {
             background: linear-gradient(135deg, #6c5ce7, #a29bfe);
             color: white;
@@ -264,6 +267,7 @@
             }
         }
 
+        /* Индикатор направления */
         .direction-indicator {
             display: flex;
             align-items: center;
@@ -593,21 +597,6 @@
             "сколько", "насколько",
         ]);
 
-        // Служебные короткие слова (предлоги, союзы, частицы) — без "ность"
-        const SHORT_SERVICE_WORDS = new Set([
-            "и", "в", "не", "на", "с", "по", "из", "от", "за", "до",
-            "об", "обо", "под", "над", "при", "про", "без", "для",
-            "а", "но", "или", "ли", "бы", "же", "уж", "у", "о",
-            "к", "со", "во", "ко", "вот", "вон", "мол", "де",
-            "тот", "та", "те", "ту", "там", "тут", "так", "ни",
-            "ещё", "уже", "всё", "бро", "типо", "ну", "типа",
-            "ведь", "хоть", "лишь", "был", "была", "было", "были",
-            "есть", "нет", "все", "вся", "весь", "они", "она", "оно",
-            "мой", "твой", "свой", "ваш", "наш", "его", "её", "их",
-            "меня", "тебя", "себя", "нас", "вас",
-            "он", "ты", "вы", "сам", "том", "этом",
-        ]);
-
         const PARTICIPLE_ENDINGS = [
             "вший", "вшая", "вшее", "вшие",
             "щий", "щая", "щее", "щие",
@@ -622,7 +611,6 @@
 
         function isGreeting(word) { return GREETINGS.has(word.toLowerCase()); }
         function isQuestionWord(word) { return QUESTION_WORDS.has(word.toLowerCase()); }
-        function isShortServiceWord(word) { return SHORT_SERVICE_WORDS.has(word.toLowerCase()); }
 
         function isParticipleOrGerund(word) {
             const lower = word.toLowerCase();
@@ -637,26 +625,15 @@
             const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
             const wordLower = word.toLowerCase();
 
-            // 1. Словарь исключений
             if (wordLower in REPLACEMENTS) {
                 let result = REPLACEMENTS[wordLower];
                 if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
                 return result;
             }
-
-            // 2. Приветствия
             if (isGreeting(wordLower)) return word;
-
-            // 3. Вопросительные слова
             if (isQuestionWord(wordLower)) return word;
-
-            // 4. Короткие служебные слова (3 буквы и меньше + спецслова)
-            if (isShortServiceWord(wordLower)) return word;
-
-            // 5. Причастия/деепричастия
             if (isParticipleOrGerund(wordLower)) return word;
 
-            // 6. Добавляем "ность" к обычным словам
             const wordStripped = wordLower.replace(/[аеёиоуыэюяьъ]$/, '');
             const finalWord = (wordStripped.length >= 2 ? wordStripped : wordLower) + "ность";
             return isCapitalized ? finalWord.charAt(0).toUpperCase() + finalWord.slice(1) : finalWord;
@@ -667,21 +644,18 @@
             const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
             const wordLower = word.toLowerCase();
 
-            // Обратный словарь
             if (wordLower in REVERSE_REPLACEMENTS) {
                 let result = REVERSE_REPLACEMENTS[wordLower];
                 if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
                 return result;
             }
 
-            // Убираем "ность"
             if (wordLower.endsWith("ность") && wordLower.length > 6) {
                 let stripped = wordLower.slice(0, -5);
                 if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
                 return stripped;
             }
 
-            // Убираем "ость" (для старых слов)
             if (wordLower.endsWith("ость") && wordLower.length > 5) {
                 let stripped = wordLower.slice(0, -4);
                 if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
@@ -746,6 +720,7 @@
             isReversed = !isReversed;
             updateDirectionUI();
             
+            // Меняем местами текст
             const temp = inputText.value;
             inputText.value = outputText.value;
             outputText.value = temp;
@@ -839,20 +814,11 @@
         }
         createParticles();
 
+        // ====== ИСПРАВЛЕННАЯ РЕГИСТРАЦИЯ SERVICE WORKER ======
         if ('serviceWorker' in navigator) {
-            const swCode = `
-                const CACHE_NAME = 'burmaldat-v5';
-                const ASSETS = [self.location.href];
-                self.addEventListener('install', e => {
-                    e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
-                });
-                self.addEventListener('fetch', e => {
-                    e.respondWith(caches.match(e.request).then(cached => cached || fetch(e.request)));
-                });
-            `;
-            const blob = new Blob([swCode], {type: 'application/javascript'});
-            const swUrl = URL.createObjectURL(blob);
-            navigator.serviceWorker.register(swUrl).catch(() => {});
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('✅ Service Worker зарегистрирован'))
+                .catch(err => console.log('❌ Ошибка SW:', err));
         }
     </script>
 </body>
