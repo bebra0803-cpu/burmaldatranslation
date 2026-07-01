@@ -211,7 +211,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Кнопка Поменять */
         .btn-reverse {
             background: linear-gradient(135deg, #6c5ce7, #a29bfe);
             color: white;
@@ -265,7 +264,6 @@
             }
         }
 
-        /* Индикатор направления */
         .direction-indicator {
             display: flex;
             align-items: center;
@@ -595,6 +593,21 @@
             "сколько", "насколько",
         ]);
 
+        // Служебные короткие слова (предлоги, союзы, частицы) — без "ность"
+        const SHORT_SERVICE_WORDS = new Set([
+            "и", "в", "не", "на", "с", "по", "из", "от", "за", "до",
+            "об", "обо", "под", "над", "при", "про", "без", "для",
+            "а", "но", "или", "ли", "бы", "же", "уж", "у", "о",
+            "к", "со", "во", "ко", "вот", "вон", "мол", "де",
+            "тот", "та", "те", "ту", "там", "тут", "так", "ни",
+            "ещё", "уже", "всё", "бро", "типо", "ну", "типа",
+            "ведь", "хоть", "лишь", "был", "была", "было", "были",
+            "есть", "нет", "все", "вся", "весь", "они", "она", "оно",
+            "мой", "твой", "свой", "ваш", "наш", "его", "её", "их",
+            "меня", "тебя", "себя", "нас", "вас",
+            "он", "ты", "вы", "сам", "том", "этом",
+        ]);
+
         const PARTICIPLE_ENDINGS = [
             "вший", "вшая", "вшее", "вшие",
             "щий", "щая", "щее", "щие",
@@ -609,6 +622,7 @@
 
         function isGreeting(word) { return GREETINGS.has(word.toLowerCase()); }
         function isQuestionWord(word) { return QUESTION_WORDS.has(word.toLowerCase()); }
+        function isShortServiceWord(word) { return SHORT_SERVICE_WORDS.has(word.toLowerCase()); }
 
         function isParticipleOrGerund(word) {
             const lower = word.toLowerCase();
@@ -623,15 +637,26 @@
             const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
             const wordLower = word.toLowerCase();
 
+            // 1. Словарь исключений
             if (wordLower in REPLACEMENTS) {
                 let result = REPLACEMENTS[wordLower];
                 if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
                 return result;
             }
+
+            // 2. Приветствия
             if (isGreeting(wordLower)) return word;
+
+            // 3. Вопросительные слова
             if (isQuestionWord(wordLower)) return word;
+
+            // 4. Короткие служебные слова (3 буквы и меньше + спецслова)
+            if (isShortServiceWord(wordLower)) return word;
+
+            // 5. Причастия/деепричастия
             if (isParticipleOrGerund(wordLower)) return word;
 
+            // 6. Добавляем "ность" к обычным словам
             const wordStripped = wordLower.replace(/[аеёиоуыэюяьъ]$/, '');
             const finalWord = (wordStripped.length >= 2 ? wordStripped : wordLower) + "ность";
             return isCapitalized ? finalWord.charAt(0).toUpperCase() + finalWord.slice(1) : finalWord;
@@ -642,18 +667,21 @@
             const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
             const wordLower = word.toLowerCase();
 
+            // Обратный словарь
             if (wordLower in REVERSE_REPLACEMENTS) {
                 let result = REVERSE_REPLACEMENTS[wordLower];
                 if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
                 return result;
             }
 
+            // Убираем "ность"
             if (wordLower.endsWith("ность") && wordLower.length > 6) {
                 let stripped = wordLower.slice(0, -5);
                 if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
                 return stripped;
             }
 
+            // Убираем "ость" (для старых слов)
             if (wordLower.endsWith("ость") && wordLower.length > 5) {
                 let stripped = wordLower.slice(0, -4);
                 if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
@@ -718,7 +746,6 @@
             isReversed = !isReversed;
             updateDirectionUI();
             
-            // Меняем местами текст
             const temp = inputText.value;
             inputText.value = outputText.value;
             outputText.value = temp;
@@ -814,7 +841,7 @@
 
         if ('serviceWorker' in navigator) {
             const swCode = `
-                const CACHE_NAME = 'burmaldat-v4';
+                const CACHE_NAME = 'burmaldat-v5';
                 const ASSETS = [self.location.href];
                 self.addEventListener('install', e => {
                     e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
