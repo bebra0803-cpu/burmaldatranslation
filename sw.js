@@ -1,9 +1,10 @@
-const CACHE_NAME = 'burmaldat-v5';
+const CACHE_NAME = 'burmaldat-v10';
 const urlsToCache = [
-  '/',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  '/burmaldatranslation/',
+  '/burmaldatranslation/index.html',
+  '/burmaldatranslation/manifest.json',
+  '/burmaldatranslation/icon-192.png',
+  '/burmaldatranslation/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
