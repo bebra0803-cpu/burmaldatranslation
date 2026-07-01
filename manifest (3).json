@@ -1,0 +1,13 @@
+{
+  "background_color": "#e65e5e",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Перевод на бурмалдатский",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Перевод на бурмалдатский",
+  "start_url": "/burmaldatranslation",
+  "theme_color": "#000000",
+  "id": "skalh",
+  "description": "переводчик на бурмалдатский с русского и наоборот"
+}
