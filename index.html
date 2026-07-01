@@ -9,8 +9,52 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Бурмалдат">
     
-    <!-- ====== ПРАВИЛЬНАЯ ССЫЛКА НА МАНИФЕСТ ====== -->
-    <link rel="manifest" href="/burmaldatranslation/manifest.json">
+    <!-- ====== МАНИФЕСТ С PNG-ИКОНКАМИ (base64) ====== -->
+    <link rel="manifest" href='data:application/manifest+json,{
+        "name": "Бурмалдатский переводчик",
+        "short_name": "Бурмалдат",
+        "description": "Переводчик на бурмалдатский язык",
+        "start_url": "/burmaldatranslation/",
+        "display": "standalone",
+        "orientation": "portrait",
+        "background_color": "#1a1a2e",
+        "theme_color": "#e94560",
+        "categories": ["productivity", "utilities"],
+        "lang": "ru",
+        "dir": "ltr",
+        "icons": [
+            {
+                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJgSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
+                "sizes": "192x192",
+                "type": "image/png",
+                "purpose": "any maskable"
+            },
+            {
+                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAmkSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
+                "sizes": "512x512",
+                "type": "image/png",
+                "purpose": "any maskable"
+            },
+            {
+                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJgSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
+                "sizes": "144x144",
+                "type": "image/png",
+                "purpose": "any maskable"
+            },
+            {
+                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJgSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
+                "sizes": "96x96",
+                "type": "image/png",
+                "purpose": "any maskable"
+            },
+            {
+                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJgSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
+                "sizes": "72x72",
+                "type": "image/png",
+                "purpose": "any maskable"
+            }
+        ]
+    }'>
     
     <title>Бурмалдатский Переводчик</title>
     
@@ -808,9 +852,45 @@
         }
         createParticles();
 
-        // ====== ПРАВИЛЬНАЯ РЕГИСТРАЦИЯ SERVICE WORKER ======
+        // ====== SERVICE WORKER ======
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/burmaldatranslation/sw.js')
+            const swCode = `
+                const CACHE_NAME = 'burmaldat-v9';
+                const urlsToCache = [
+                    '/burmaldatranslation/',
+                    '/burmaldatranslation/index.html'
+                ];
+                
+                self.addEventListener('install', event => {
+                    event.waitUntil(
+                        caches.open(CACHE_NAME)
+                            .then(cache => cache.addAll(urlsToCache))
+                    );
+                });
+                
+                self.addEventListener('fetch', event => {
+                    event.respondWith(
+                        caches.match(event.request)
+                            .then(response => response || fetch(event.request))
+                    );
+                });
+                
+                self.addEventListener('activate', event => {
+                    event.waitUntil(
+                        caches.keys().then(cacheNames => {
+                            return Promise.all(
+                                cacheNames.filter(name => name !== CACHE_NAME)
+                                    .map(name => caches.delete(name))
+                            );
+                        })
+                    );
+                });
+            `;
+            
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+            
+            navigator.serviceWorker.register(swUrl)
                 .then(() => console.log('✅ Service Worker зарегистрирован'))
                 .catch(err => console.log('❌ Ошибка SW:', err));
         }
