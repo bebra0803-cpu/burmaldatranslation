@@ -8,53 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Бурмалдат">
-    
-    <!-- ====== МАНИФЕСТ С PNG-ИКОНКАМИ (base64) ====== -->
-    <link rel="manifest" href='data:application/manifest+json,{
-        "name": "Бурмалдатский переводчик",
-        "short_name": "Бурмалдат",
-        "description": "Переводчик на бурмалдатский язык",
-        "start_url": "/burmaldatranslation/",
-        "display": "standalone",
-        "orientation": "portrait",
-        "background_color": "#1a1a2e",
-        "theme_color": "#e94560",
-        "categories": ["productivity", "utilities"],
-        "lang": "ru",
-        "dir": "ltr",
-        "icons": [
-            {
-                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJgSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
-                "sizes": "192x192",
-                "type": "image/png",
-                "purpose": "any maskable"
-            },
-            {
-                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAmkSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
-                "sizes": "512x512",
-                "type": "image/png",
-                "purpose": "any maskable"
-            },
-            {
-                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJgSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
-                "sizes": "144x144",
-                "type": "image/png",
-                "purpose": "any maskable"
-            },
-            {
-                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJgSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
-                "sizes": "96x96",
-                "type": "image/png",
-                "purpose": "any maskable"
-            },
-            {
-                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJgSURBVHic7d2xcdswFIZh0gK0kycJk8WziBSYyh24hTqXh9AUKtRCpWSyiLQyC2dL4Y2UOoh6CwKiKIg5PvC8p05GQIAA9B+v+6cJAAA8JwQBAAhCEABCEARAiBd3uNm73d1PHW4LAMDMfqQ+PN0LxuCb7rF9uqnH3wIA0Iu+m2+GWX4YZqvz7zk6Kw4OiRAA4T3sOn9W7/Tsx+e/59FgcRjZ5p+3XH8JACDSCkKIECGAQn6mPnwZhU/fh9XprCwOjguGAADy6i3+JkIIR/lP2/zb7jMcAACZvsfhx3I4RgDl/TFMm6HTYgKAz/TsR3N/jMXDf47qB3cWiAMA9JIGQphv8TfDdAAQmbzNHY0QHAAoI4QQAGBySgihnFJCCMVeWltYefgdAAAvaV+03A8CdwNmGcQAAP3j7S6HnfDp+7A8zTxWYQkHAKApPYYwjBIuAMA+gx5DIISANM3dL8N+ENB5sU8EADTPhRsAAM8JIQAAQQgAIAhBAIQgBACAIAgBAIQgAAAIQQBAEIIQAEIQAgBACAIAIAQhAIAgBAEAQhACAARBAABCEAAQhCAAAEEIAIAQhAAAgjBpAQCEIEhQvzzm5je5brzot+3e3i1uLs+6vX4X11h6vX2aAQDozzQjBAAAAiEAgBAEAABBAAAQBACQcHnFqfip0zsAALRBz33jshMAQBACAAiFfOo3AYBb5C7KhSjA0+OkPKo6mhOH3s8Fgdl2HjZpff27wcbj7QAAoEJiLLdIf0LhcLPzDwpRAADwiVAAgECIAAACIQIACIQAAD8UAgA4og8A4IhCALxU1fV3OcI6HaxK04IAAAAASUVORK5CYII=",
-                "sizes": "72x72",
-                "type": "image/png",
-                "purpose": "any maskable"
-            }
-        ]
-    }'>
+    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%87%D0%B8%D0%BA%22%2C%22short_name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231a1a2e%22%2C%22theme_color%22%3A%22%23e94560%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20100%20100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'20'%20fill%3D'%231a1a2e'%2F%3E%3Ctext%20x%3D'50'%20y%3D'65'%20font-size%3D'55'%20text-anchor%3D'middle'%20fill%3D'%23e94560'%20font-family%3D'Arial'%3E%D0%91%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22100x100%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%2C%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20512%20512'%3E%3Crect%20width%3D'512'%20height%3D'512'%20rx%3D'100'%20fill%3D'%231a1a2e'%2F%3E%3Ctext%20x%3D'256'%20y%3D'330'%20font-size%3D'280'%20text-anchor%3D'middle'%20fill%3D'%23e94560'%20font-family%3D'Arial'%20font-weight%3D'bold'%3E%D0%91%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
     
     <title>Бурмалдатский Переводчик</title>
     
@@ -586,27 +540,29 @@
     </div>
 
     <script>
-        // ==================== СЛОВАРЬ ====================
+        // ==================== СЛОВАРЬ БУРМАЛДАТСКОГО (ИСКЛЮЧЕНИЯ) ====================
         const REPLACEMENTS = {
             "я": "ч", "мне": "мье", "мы": "мч", "кто": "кьо",
-            "это": "эьо", "что": "ято", "то": "ьо", "да": "дэ",
+            "это": "эьо", "то": "ьо", "да": "дэ",
             "лет": "тет", "сек": "чек", "пшо": "его",
             "друг": "друн", "кот": "котость", "школа": "школость",
             "телефон": "бурмалдфон", "заяц": "бурмалдаяц",
             "птички": "бурмалдички", "зонтом": "зонтичностью",
-            "внук": "внуч", "меллстрой": "меллстройность",
+            "внук": "внуч", "дед": "дод",
+            "меллстрой": "меллстройность",
             "фамилия": "фомилия", "максим": "еле говрящий Максим",
             "эверест": "элевер", "чёрт": "тёлт", "черт": "тёлт",
-            "блин": "бл*н", "тенге": "ценге", "манго": "maaaaaango",
+            "блин": "бл*н", "тенге": "ценге", "манго": "mango",
             "парни": "барни", "хогвартс": "fogвартс",
             "роналдо": "рональжо", "жопа": "туз", "лайк": "лося",
             "пена": "пема", "берёза": "береза", "береза": "береза",
             "дуб": "дур", "мод": "мож",
+            "куколд": "Qcold", "обновление": "боновление",
             "гулять": "БЛЯДЬ гулять", "смеяться": "сметанаяйца",
             "старался": "стараласт", "старалась": "стараласт",
-            "кинула": "кикула", "важнее": "вишнее",
-            "нишевая": "нищая", "отлично": "бурмалда",
-            "поганец": "понанец",
+            "кинула": "кикула", "было": "блыо",
+            "важнее": "вишнее", "нишевая": "нищая",
+            "отлично": "бурмалда", "поганец": "понанец",
         };
 
         const REVERSE_REPLACEMENTS = {};
@@ -631,12 +587,82 @@
             "как", "какой", "какая", "какое", "какие",
             "каков", "какова", "каково", "каковы",
             "чей", "чья", "чьё", "чьи",
-            "кем", "ком", "кому", "кого", "который",
-            "которая", "которое", "которые",
+            "кем", "ком", "кому", "кого",
             "где", "куда", "откуда",
             "когда", "зачем", "почему", "отчего",
             "сколько", "насколько",
+            "который", "которая", "которое", "которые",
         ]);
+
+        const NO_SUFFIX_WORDS = new Set([
+            "я", "ты", "он", "она", "оно", "мы", "вы", "они",
+            "меня", "тебя", "его", "её", "нас", "вас", "их",
+            "мне", "тебе", "ему", "ей", "нам", "вам", "им",
+            "мной", "тобой", "им", "ею", "нами", "вами", "ими",
+            "обо", "него", "неё", "них",
+            "мой", "твой", "свой", "наш", "ваш",
+            "моя", "твоя", "своя", "наша", "ваша",
+            "моё", "твоё", "своё", "наше", "ваше",
+            "мои", "твои", "свои", "наши", "ваши",
+            "этот", "эта", "эти", "этом", "этой", "этих",
+            "тот", "та", "то", "те", "том", "той", "тех",
+            "такой", "такая", "такое", "такие",
+            "столько", "тут", "там", "здесь", "вот", "вон",
+            "в", "на", "с", "по", "из", "от", "за", "до",
+            "об", "под", "над", "при", "про", "без", "для",
+            "к", "у", "о", "со", "во", "ко", "изо", "ото",
+            "перед", "через", "между", "ради", "вокруг",
+            "около", "после", "прежде", "против", "среди",
+            "и", "а", "но", "или", "либо", "ли", "бы", "же",
+            "что", "чтобы", "если", "когда", "пока",
+            "ведь", "хоть", "хотя", "раз", "словно", "будто",
+            "точно", "как", "так", "тоже", "также", "зато",
+            "однако", "притом", "причём", "итак", "потому",
+            "не", "ни", "да", "нет", "бы", "ли", "же", "уж",
+            "уже", "ещё", "всё", "все", "сам", "сама", "само", "сами",
+            "себе", "себя", "собой",
+            "был", "была", "было", "были",
+            "есть", "буду", "будет", "будут",
+            "бро", "типо", "типа", "ну", "короче",
+            "вообще", "ваще", "реально", "жесть",
+        ]);
+
+        const SWEAR_WORDS = new Set([
+            "хуй", "нахуй", "нахуя", "дохуя", "похуй", "похую",
+            "хуёвый", "хуёво", "хуйня", "хуйню", "хуйней",
+            "пизда", "пиздец", "пиздюк", "пиздеть", "пиздишь",
+            "ебать", "ебал", "ебала", "ебали", "ебёт", "ебу",
+            "ебанутый", "ебанный", "еблан", "ебло",
+            "блядь", "блять", "бля", "блядина", "блядство",
+            "сука", "суки", "сука", "суку",
+            "ахуеть", "ахуел", "ахуела", "охуеть", "охуел",
+            "заебал", "заебала", "заебало", "заебали",
+            "уебок", "уебан", "уёбище",
+            "гандон", "мудак", "мудила", "пидор", "пидорас",
+            "хуесос", "хуеплёт", "долбоёб",
+            "мразь", "тварь", "падла", "сволочь",
+            "выебон", "выебываться", "проебал", "проебать",
+            "наебать", "наебал", "разъебал", "разъебать",
+            "въебать", "въебал", "отъебать", "отъебал",
+            "подъебать", "подъебал", "съебать", "съебал",
+            "ебанько", "ебануться", "ебанулся",
+            "пизданутый", "пиздануть", "пизданул",
+            "хуярить", "хуярит", "хуярил",
+            "хули", "нах", "пох", "схуя", "схуяли",
+        ]);
+
+        // Только глагольные окончания (без -ими, -ями, -ыми, -ами)
+        const VERB_ENDINGS = [
+            "ть", "ти", "чь", "тся", "ться",
+            "ю", "ешь", "ет", "ем", "ете", "ют", "ут",
+            "ишь", "ит", "им", "ите", "ат", "ят",
+            "л", "ла", "ло", "ли",
+            "й", "йте", "ь", "ься", "ся",
+            "уй", "уйте", "ай", "айте", "ей", "ейте",
+            "овал", "евала", "овало", "овали",
+            "ывал", "ывала", "ывало", "ывали",
+            "ивал", "ивала", "ивало", "ивали",
+        ];
 
         const PARTICIPLE_ENDINGS = [
             "вший", "вшая", "вшее", "вшие",
@@ -652,6 +678,44 @@
 
         function isGreeting(word) { return GREETINGS.has(word.toLowerCase()); }
         function isQuestionWord(word) { return QUESTION_WORDS.has(word.toLowerCase()); }
+        function isNoSuffixWord(word) { return NO_SUFFIX_WORDS.has(word.toLowerCase()); }
+        function isSwearWord(word) { return SWEAR_WORDS.has(word.toLowerCase()); }
+
+        function isPlural(word) {
+            const lower = word.toLowerCase();
+            
+            const pluralEndings = [
+                "ы", "и", "а", "я",
+                "ов", "ев", "ей", "ий", "ых", "их",
+                "ам", "ям",
+                "ами", "ями", "ими", "ыми",
+                "ах", "ях",
+            ];
+            
+            const gerundEndings = ["авши", "евши", "учи", "ючи", "вши", "вша"];
+            for (const ending of gerundEndings) {
+                if (lower.endsWith(ending)) return false;
+            }
+            
+            for (const ending of pluralEndings) {
+                if (lower.endsWith(ending) && lower.length > ending.length + 2) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
+        function isVerb(word) {
+            const lower = word.toLowerCase();
+            for (const ending of VERB_ENDINGS) {
+                if (lower.endsWith(ending) && lower.length > ending.length + 1) return true;
+            }
+            if (lower.endsWith("ть") || lower.endsWith("ти") || lower.endsWith("чь")) return true;
+            if (lower.match(/[а-яё]+л[аои]?$/i) && lower.length > 3) return true;
+            if (lower.match(/[а-яё]+[юуеиая][тшщ]?$/i) && lower.length > 3) return true;
+            return false;
+        }
 
         function isParticipleOrGerund(word) {
             const lower = word.toLowerCase();
@@ -661,24 +725,51 @@
             return false;
         }
 
+        // Русский → Бурмалдатский
         function translateWord(word) {
             const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
             const wordLower = word.toLowerCase();
 
+            // 1. Словарь исключений
             if (wordLower in REPLACEMENTS) {
                 let result = REPLACEMENTS[wordLower];
                 if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
                 return result;
             }
+
+            // 2. Приветствия
             if (isGreeting(wordLower)) return word;
+
+            // 3. Вопросительные
             if (isQuestionWord(wordLower)) return word;
+
+            // 4. Служебные/местоимения
+            if (isNoSuffixWord(wordLower)) return word;
+
+            // 5. Маты
+            if (isSwearWord(wordLower)) return word;
+
+            // 6. Множественное число → "ности" (ПРОВЕРЯЕМ ДО ГЛАГОЛОВ!)
+            if (isPlural(wordLower)) {
+                let stripped = wordLower.replace(/(ов|ев|ей|ий|ых|их|ам|ям|ами|ями|ими|ыми|ах|ях|ы|и|а|я)$/, '');
+                if (stripped.length < 2) stripped = wordLower;
+                const finalWord = stripped + "ности";
+                return isCapitalized ? finalWord.charAt(0).toUpperCase() + finalWord.slice(1) : finalWord;
+            }
+
+            // 7. Глаголы (ПРОВЕРЯЕМ ПОСЛЕ МН. ЧИСЛА)
+            if (isVerb(wordLower)) return word;
+
+            // 8. Причастия/деепричастия
             if (isParticipleOrGerund(wordLower)) return word;
 
+            // 9. Обычные слова → "ность"
             const wordStripped = wordLower.replace(/[аеёиоуыэюяьъ]$/, '');
             const finalWord = (wordStripped.length >= 2 ? wordStripped : wordLower) + "ность";
             return isCapitalized ? finalWord.charAt(0).toUpperCase() + finalWord.slice(1) : finalWord;
         }
 
+        // Бурмалдатский → Русский
         function reverseTranslateWord(word) {
             const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
             const wordLower = word.toLowerCase();
@@ -687,6 +778,12 @@
                 let result = REVERSE_REPLACEMENTS[wordLower];
                 if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
                 return result;
+            }
+
+            if (wordLower.endsWith("ности") && wordLower.length > 6) {
+                let stripped = wordLower.slice(0, -4);
+                if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
+                return stripped + "ы";
             }
 
             if (wordLower.endsWith("ность") && wordLower.length > 6) {
@@ -852,47 +949,20 @@
         }
         createParticles();
 
-        // ====== SERVICE WORKER ======
         if ('serviceWorker' in navigator) {
             const swCode = `
-                const CACHE_NAME = 'burmaldat-v9';
-                const urlsToCache = [
-                    '/burmaldatranslation/',
-                    '/burmaldatranslation/index.html'
-                ];
-                
-                self.addEventListener('install', event => {
-                    event.waitUntil(
-                        caches.open(CACHE_NAME)
-                            .then(cache => cache.addAll(urlsToCache))
-                    );
+                const CACHE_NAME = 'burmaldat-v12';
+                const ASSETS = [self.location.href];
+                self.addEventListener('install', e => {
+                    e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
                 });
-                
-                self.addEventListener('fetch', event => {
-                    event.respondWith(
-                        caches.match(event.request)
-                            .then(response => response || fetch(event.request))
-                    );
-                });
-                
-                self.addEventListener('activate', event => {
-                    event.waitUntil(
-                        caches.keys().then(cacheNames => {
-                            return Promise.all(
-                                cacheNames.filter(name => name !== CACHE_NAME)
-                                    .map(name => caches.delete(name))
-                            );
-                        })
-                    );
+                self.addEventListener('fetch', e => {
+                    e.respondWith(caches.match(e.request).then(cached => cached || fetch(e.request)));
                 });
             `;
-            
-            const blob = new Blob([swCode], { type: 'application/javascript' });
+            const blob = new Blob([swCode], {type: 'application/javascript'});
             const swUrl = URL.createObjectURL(blob);
-            
-            navigator.serviceWorker.register(swUrl)
-                .then(() => console.log('✅ Service Worker зарегистрирован'))
-                .catch(err => console.log('❌ Ошибка SW:', err));
+            navigator.serviceWorker.register(swUrl).catch(() => {});
         }
     </script>
 </body>
