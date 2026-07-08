@@ -539,15 +539,17 @@
         </div>
     </div>
 
+    <!-- ========== СКРЫТЫЙ АУДИОПЛЕЕР ДЛЯ ФОНОВОЙ МУЗЫКИ ========== -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         // ==================== СЛОВАРЬ БУРМАЛДАТСКОГО (ИСКЛЮЧЕНИЯ) ====================
         const REPLACEMENTS = {
-            // Местоимения и короткие слова
             "я": "ч", "мне": "мье", "мы": "мч", "кто": "кьо",
             "это": "эьо", "то": "ьо", "да": "дэ",
             "лет": "тет", "сек": "чек", "пшо": "его",
-            
-            // Существительные
             "друг": "друн", "кот": "котость", "школа": "школость",
             "телефон": "бурмалдфон", "заяц": "бурмалдаяц",
             "птички": "бурмалдички", "зонтом": "зонтичностью",
@@ -566,8 +568,6 @@
             "суп": "рамен",
             "батя": "батч",
             "мама": "мом",
-            
-            // Глаголы
             "гулять": "БЛЯДЬ гулять", "смеяться": "сметанаяйца",
             "старался": "стараласт", "старалась": "стараласт",
             "кинула": "кикула", "было": "блыо",
@@ -579,8 +579,6 @@
             "соглашусь": "соглашунь",
             "пишу": "пизу",
             "попутал": "порупал",
-            
-            // Прилагательные/наречия
             "важнее": "вишнее", "нишевая": "нищая",
             "отлично": "бурмалда", "поганец": "понанец",
             "правильно": "прыгилдо",
@@ -749,31 +747,21 @@
             return false;
         }
 
-        // Русский → Бурмалдатский
         function translateWord(word) {
             const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
             const wordLower = word.toLowerCase();
 
-            // 1. Словарь исключений
             if (wordLower in REPLACEMENTS) {
                 let result = REPLACEMENTS[wordLower];
                 if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
                 return result;
             }
 
-            // 2. Приветствия
             if (isGreeting(wordLower)) return word;
-
-            // 3. Вопросительные
             if (isQuestionWord(wordLower)) return word;
-
-            // 4. Служебные/местоимения
             if (isNoSuffixWord(wordLower)) return word;
-
-            // 5. Маты
             if (isSwearWord(wordLower)) return word;
 
-            // 6. Множественное число → "ности"
             if (isPlural(wordLower)) {
                 let stripped = wordLower.replace(/(ов|ев|ей|ий|ых|их|ам|ям|ами|ями|ими|ыми|ах|ях|ы|и|а|я)$/, '');
                 if (stripped.length < 2) stripped = wordLower;
@@ -781,19 +769,14 @@
                 return isCapitalized ? finalWord.charAt(0).toUpperCase() + finalWord.slice(1) : finalWord;
             }
 
-            // 7. Глаголы
             if (isVerb(wordLower)) return word;
-
-            // 8. Причастия/деепричастия
             if (isParticipleOrGerund(wordLower)) return word;
 
-            // 9. Обычные слова → "ность"
             const wordStripped = wordLower.replace(/[аеёиоуыэюяьъ]$/, '');
             const finalWord = (wordStripped.length >= 2 ? wordStripped : wordLower) + "ность";
             return isCapitalized ? finalWord.charAt(0).toUpperCase() + finalWord.slice(1) : finalWord;
         }
 
-        // Бурмалдатский → Русский
         function reverseTranslateWord(word) {
             const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
             const wordLower = word.toLowerCase();
@@ -988,6 +971,30 @@
             const swUrl = URL.createObjectURL(blob);
             navigator.serviceWorker.register(swUrl).catch(() => {});
         }
+
+        // ==================== ЗАПУСК ФОНОВОЙ МУЗЫКИ ====================
+        (function() {
+            const audio = document.getElementById('bgMusic');
+            
+            // Громкость 30% (можно изменить от 0 до 1)
+            audio.volume = 0.3;
+            
+            function tryPlay() {
+                audio.play().then(() => {
+                    console.log('✅ Музыка играет');
+                }).catch((e) => {
+                    console.log('⏳ Автовоспроизведение заблокировано, ждём клик');
+                    // На мобильных устройствах нужно взаимодействие пользователя
+                    document.addEventListener('click', function playOnClick() {
+                        audio.play().catch(() => {});
+                        document.removeEventListener('click', playOnClick);
+                    }, { once: true });
+                });
+            }
+
+            // Запускаем через 0.5 секунды после загрузки
+            setTimeout(tryPlay, 500);
+        })();
     </script>
 </body>
 </html>
