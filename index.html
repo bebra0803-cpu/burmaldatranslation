@@ -4,483 +4,374 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <meta name="theme-color" content="#1a1a2e">
+    <meta name="theme-color" content="#1e1e1e">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Бурмалдат">
-    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D1%87%D0%B8%D0%BA%22%2C%22short_name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231a1a2e%22%2C%22theme_color%22%3A%22%23e94560%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20100%20100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'20'%20fill%3D'%231a1a2e'%2F%3E%3Ctext%20x%3D'50'%20y%3D'65'%20font-size%3D'55'%20text-anchor%3D'middle'%20fill%3D'%23e94560'%20font-family%3D'Arial'%3E%D0%91%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22100x100%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%2C%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20512%20512'%3E%3Crect%20width%3D'512'%20height%3D'512'%20rx%3D'100'%20fill%3D'%231a1a2e'%2F%3E%3Ctext%20x%3D'256'%20y%3D'330'%20font-size%3D'280'%20text-anchor%3D'middle'%20fill%3D'%23e94560'%20font-family%3D'Arial'%20font-weight%3D'bold'%3E%D0%91%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%22%2C%22short_name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231e1e1e%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20100%20100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'20'%20fill%3D'%231e1e1e'%2F%3E%3Ctext%20x%3D'50'%20y%3D'65'%20font-size%3D'55'%20text-anchor%3D'middle'%20fill%3D'%23ffffff'%20font-family%3D'Arial'%3E%D0%91%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22100x100%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
     
     <title>Бурмалдатский Переводчик</title>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             min-height: 100vh;
             min-height: 100dvh;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: #1e1e1e;
+            color: #e5e5e5;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
+            padding: 40px 20px;
             -webkit-user-select: none;
             user-select: none;
             overscroll-behavior: none;
         }
 
-        textarea { -webkit-user-select: text; user-select: text; }
-
-        .particles {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none; z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(233, 69, 96, 0.3);
-            border-radius: 50%;
-            animation: float 15s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            50% { transform: translateY(-100vh) translateX(100px) rotate(360deg); }
-        }
+        textarea, input { -webkit-user-select: text; user-select: text; }
 
         .container {
-            position: relative; z-index: 1;
-            width: 100%; max-width: 850px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
-                        0 0 0 1px rgba(233, 69, 96, 0.1),
-                        inset 0 0 60px rgba(233, 69, 96, 0.05);
+            width: 100%;
+            max-width: 720px;
+            background: #262626;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 32px;
         }
 
-        @media (hover: hover) {
-            .container:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5),
-                            0 0 0 1px rgba(233, 69, 96, 0.2),
-                            inset 0 0 80px rgba(233, 69, 96, 0.08);
-            }
+        .header {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
         }
-
-        .header { text-align: center; margin-bottom: 25px; }
 
         .title {
-            font-size: 42px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #e94560, #ff6b6b, #ffd93d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
-        }
-
-        .translator-box { display: flex; flex-direction: column; gap: 18px; }
-
-        .input-group { position: relative; }
-
-        .label {
-            display: flex; align-items: center; gap: 10px;
-            margin-bottom: 10px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px; font-weight: 600;
-            letter-spacing: 1px; text-transform: uppercase;
-        }
-
-        .label-icon {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: #e94560;
-            box-shadow: 0 0 10px #e94560;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 10px #e94560; }
-            50% { box-shadow: 0 0 25px #e94560, 0 0 50px #e94560; }
-        }
-
-        .output-label .label-icon {
-            background: #ffd93d;
-            box-shadow: 0 0 10px #ffd93d;
-            animation: pulse-yellow 2s infinite;
-        }
-
-        @keyframes pulse-yellow {
-            0%, 100% { box-shadow: 0 0 10px #ffd93d; }
-            50% { box-shadow: 0 0 25px #ffd93d, 0 0 50px #ffd93d; }
-        }
-
-        textarea {
-            width: 100%;
-            padding: 18px 20px;
-            border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            font-size: 16px;
-            font-family: 'Montserrat', sans-serif;
-            resize: vertical;
-            min-height: 110px;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        textarea:focus {
-            border-color: #e94560;
-            box-shadow: 0 0 30px rgba(233, 69, 96, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        textarea::placeholder { color: rgba(255, 255, 255, 0.3); }
-
-        #outputText {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 215, 0, 0.2);
-        }
-
-        #outputText:focus {
-            border-color: #ffd93d;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
-        }
-
-        .button-group {
-            display: flex; gap: 10px;
-            justify-content: center; flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 22px;
-            border-radius: 50px; border: none;
-            font-size: 14px; font-weight: 700;
-            letter-spacing: 0.8px; cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-family: 'Montserrat', sans-serif;
-            position: relative; overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-            flex: 1; min-width: 90px; text-align: center;
-        }
-
-        .btn-reverse {
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            color: white;
-            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
-            flex: 1.2;
-        }
-
-        @media (hover: hover) {
-            .btn-reverse:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 40px rgba(108, 92, 231, 0.6);
-            }
-        }
-
-        .btn-reverse:active { transform: scale(0.95); }
-
-        .btn-copy {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        @media (hover: hover) {
-            .btn-copy:hover {
-                background: rgba(255, 255, 255, 0.2);
-                border-color: #ffd93d;
-                box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-                transform: translateY(-3px);
-            }
-        }
-
-        .btn-random {
-            background: linear-gradient(135deg, #fd79a8, #e17055);
-            color: white;
-            box-shadow: 0 10px 30px rgba(225, 112, 85, 0.4);
-        }
-
-        @media (hover: hover) {
-            .btn-random:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 40px rgba(225, 112, 85, 0.6);
-            }
-        }
-
-        .btn-random:active { transform: scale(0.95); }
-
-        .btn-clear {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            flex: 0.7;
-        }
-
-        @media (hover: hover) {
-            .btn-clear:hover {
-                color: white;
-                border-color: rgba(255, 255, 255, 0.4);
-                background: rgba(255, 255, 255, 0.05);
-                transform: translateY(-3px);
-            }
-        }
-
-        .btn-history {
-            background: linear-gradient(135deg, #00b894, #00cec9);
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 206, 201, 0.3);
-            flex: 0.8;
-        }
-
-        @media (hover: hover) {
-            .btn-history:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 40px rgba(0, 206, 201, 0.5);
-            }
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
         }
 
         .direction-indicator {
-            display: flex; align-items: center;
-            justify-content: center; gap: 8px;
-            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .direction-text {
+            color: #888;
+            font-size: 13px;
         }
 
         .direction-arrow {
-            color: #ffd93d; font-size: 18px;
-            transition: transform 0.4s ease;
+            color: #3b82f6;
+            font-size: 14px;
+            transition: transform 0.2s ease;
         }
 
         .direction-arrow.reversed { transform: rotate(180deg); }
 
-        .direction-text {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 11px; letter-spacing: 2px;
+        .translator-box {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .label {
+            color: #999;
+            font-size: 12px;
+            font-weight: 500;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .copy-notification {
-            position: fixed; top: 30px; left: 50%;
-            transform: translateX(-50%) translateY(-150px);
-            background: #ffd93d; color: #1a1a2e;
-            padding: 15px 30px; border-radius: 50px;
-            font-weight: 700; letter-spacing: 1px;
-            z-index: 1000;
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3a;
+            background: #1a1a1a;
+            color: #e5e5e5;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.15s ease;
+            outline: none;
+            line-height: 1.5;
         }
 
-        .copy-notification.show { transform: translateX(-50%) translateY(0); }
+        textarea:focus {
+            border-color: #3b82f6;
+        }
+
+        textarea::placeholder {
+            color: #555;
+        }
+
+        #outputText {
+            background: #1a1a1a;
+            color: #b8b8b8;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: 1px solid #3a3a3a;
+            background: #2a2a2a;
+            color: #e5e5e5;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            font-family: 'Inter', sans-serif;
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #333;
+            border-color: #444;
+        }
+
+        .btn:active {
+            background: #2a2a2a;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+        }
 
         .stats {
-            display: flex; justify-content: center;
-            gap: 30px; margin-top: 15px;
+            display: flex;
+            gap: 24px;
+            margin-top: 8px;
+            padding-top: 16px;
+            border-top: 1px solid #333;
         }
 
-        .stat-item { text-align: center; }
+        .stat-item {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
 
         .stat-value {
-            font-size: 22px; font-weight: 700;
-            color: #ffd93d;
+            font-size: 14px;
+            font-weight: 600;
+            color: #e5e5e5;
         }
 
         .stat-label {
-            font-size: 11px; color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 2px; text-transform: uppercase;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-80px);
+            background: #3b82f6;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 1000;
+            transition: transform 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .copy-notification.show {
+            transform: translateX(-50%) translateY(0);
         }
 
         .history-panel {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease, opacity 0.2s ease;
             opacity: 0;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px; margin-top: 0;
+            margin-top: 0;
         }
 
         .history-panel.open {
-            max-height: 450px; opacity: 1;
-            margin-top: 15px; padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 16px;
         }
 
         .history-search {
-            width: 100%; padding: 10px 15px;
-            border-radius: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff; font-size: 14px;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 12px; outline: none;
-            transition: all 0.3s ease;
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #3a3a3a;
+            background: #1a1a1a;
+            color: #e5e5e5;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 10px;
+            outline: none;
+            transition: border-color 0.15s ease;
         }
 
         .history-search:focus {
-            border-color: #00cec9;
-            box-shadow: 0 0 20px rgba(0, 206, 201, 0.15);
-            background: rgba(255, 255, 255, 0.08);
+            border-color: #3b82f6;
         }
 
-        .history-search::placeholder { color: rgba(255, 255, 255, 0.3); }
+        .history-search::placeholder {
+            color: #555;
+        }
 
         .history-list {
-            max-height: 320px; overflow-y: auto;
-            display: flex; flex-direction: column; gap: 8px;
+            max-height: 340px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        .history-list::-webkit-scrollbar { width: 4px; }
-        .history-list::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
+        .history-list::-webkit-scrollbar {
+            width: 6px;
         }
+
+        .history-list::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 3px;
+        }
+
         .history-list::-webkit-scrollbar-thumb {
-            background: #e94560; border-radius: 4px;
+            background: #444;
+            border-radius: 3px;
         }
 
         .history-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px; padding: 12px 15px;
-            display: flex; flex-direction: column; gap: 4px;
-            cursor: pointer; transition: background 0.2s ease;
-            border-left: 3px solid #e94560;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
         }
 
-        .history-item:hover { background: rgba(255, 255, 255, 0.08); }
-        .history-item.hidden { display: none; }
+        .history-item:hover {
+            border-color: #555;
+        }
 
         .history-item .h-source {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 12px; font-weight: 400;
+            color: #888;
+            font-size: 12px;
         }
 
         .history-item .h-target {
-            color: #fff; font-size: 14px; font-weight: 600;
+            color: #e5e5e5;
+            font-size: 13px;
+            font-weight: 500;
         }
 
         .history-item .h-time {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 10px; align-self: flex-end;
+            color: #555;
+            font-size: 10px;
+            align-self: flex-end;
         }
 
         .history-empty {
-            color: rgba(255, 255, 255, 0.3);
-            text-align: center; padding: 30px; font-size: 14px;
+            color: #666;
+            text-align: center;
+            padding: 24px;
+            font-size: 13px;
         }
 
         .history-count {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 11px; text-align: right; margin-top: 5px;
-        }
-
-        .ripple {
-            position: absolute; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-            pointer-events: none;
-        }
-
-        @keyframes ripple {
-            to { transform: scale(4); opacity: 0; }
-        }
-
-        @supports (padding: max(0px)) {
-            body {
-                padding-left: max(20px, env(safe-area-inset-left));
-                padding-right: max(20px, env(safe-area-inset-right));
-                padding-bottom: max(20px, env(safe-area-inset-bottom));
-                padding-top: max(20px, env(safe-area-inset-top));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 25px; border-radius: 25px; }
-            .title { font-size: 36px; }
-            .btn { padding: 11px 16px; font-size: 12px; min-width: 70px; }
+            color: #666;
+            font-size: 11px;
+            text-align: right;
+            margin-top: 8px;
         }
 
         @media (max-width: 600px) {
             body {
-                padding: 10px;
-                align-items: flex-start;
-                padding-top: 20px;
+                padding: 16px 12px;
             }
-            .container { padding: 18px; border-radius: 20px; }
-            .header { margin-bottom: 20px; }
-            .title { font-size: 26px; letter-spacing: 1px; }
-            .translator-box { gap: 12px; }
-            .label { font-size: 11px; letter-spacing: 0.5px; }
-            textarea { font-size: 16px; padding: 14px; min-height: 90px; border-radius: 14px; }
-            .button-group { gap: 6px; }
+            .container {
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .title {
+                font-size: 20px;
+            }
             .btn {
-                padding: 10px 10px; font-size: 10px;
-                letter-spacing: 0.3px; border-radius: 30px;
-                min-width: 50px; flex: 1;
+                padding: 9px 10px;
+                font-size: 12px;
+                min-width: 60px;
             }
-            .btn-reverse { flex: 1.2; min-width: 60px; }
-            .btn-clear { flex: 0.6; min-width: 45px; }
-            .btn-history { flex: 0.8; min-width: 50px; }
-            .stats { gap: 16px; margin-top: 12px; }
-            .stat-value { font-size: 18px; }
-            .stat-label { font-size: 9px; }
-            .copy-notification { top: 15px; padding: 10px 20px; font-size: 13px; }
-            .history-panel.open { padding: 10px; max-height: 350px; }
-            .history-list { max-height: 240px; }
-            .history-item { padding: 8px 12px; }
-            .history-item .h-target { font-size: 12px; }
-            .history-item .h-source { font-size: 10px; }
-            .history-search { font-size: 12px; padding: 8px 12px; }
+            .stats {
+                gap: 16px;
+            }
+            textarea {
+                font-size: 14px;
+                padding: 12px 14px;
+                min-height: 80px;
+            }
         }
 
-        @media (max-width: 380px) {
-            body { padding: 5px; padding-top: 15px; }
-            .container { padding: 12px; border-radius: 15px; }
-            .title { font-size: 22px; }
-            .header { margin-bottom: 15px; }
-            textarea { font-size: 15px; padding: 10px; min-height: 70px; border-radius: 10px; }
-            .btn { padding: 8px 6px; font-size: 8px; min-width: 35px; letter-spacing: 0; }
-            .label { font-size: 10px; }
-            .stat-value { font-size: 16px; }
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(12px, env(safe-area-inset-left));
+                padding-right: max(12px, env(safe-area-inset-right));
+                padding-bottom: max(16px, env(safe-area-inset-bottom));
+                padding-top: max(16px, env(safe-area-inset-top));
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="particles" id="particles"></div>
-
-    <div class="copy-notification" id="notification">Скопировано!</div>
+    <div class="copy-notification" id="notification">Скопировано</div>
 
     <div class="container">
         <div class="header">
-            <h1 class="title">БУРМАЛДАТСКИЙ</h1>
+            <h1 class="title">Бурмалдатский переводчик</h1>
             <div class="direction-indicator">
                 <span class="direction-text" id="directionLabel">Русский → Бурмалдатский</span>
-                <span class="direction-arrow" id="directionArrow">↓</span>
+                <span class="direction-arrow" id="directionArrow">→</span>
             </div>
         </div>
 
         <div class="translator-box">
             <div class="input-group">
-                <div class="label">
-                    <span class="label-icon"></span>
-                    <span id="inputLabel">Текст на русском</span>
-                </div>
+                <div class="label" id="inputLabel">Текст на русском</div>
                 <textarea 
                     id="inputText" 
-                    placeholder="Пиши сюда, бро..."
+                    placeholder="Пиши сюда..."
                     autocomplete="off"
                     autocorrect="off"
                     spellcheck="false"
@@ -488,18 +379,15 @@
             </div>
 
             <div class="button-group">
-                <button class="btn btn-reverse" id="reverseBtn">Поменять</button>
-                <button class="btn btn-random" id="randomBtn">Рандомный текст</button>
-                <button class="btn btn-copy" id="copyBtn">Копировать</button>
-                <button class="btn btn-history" id="historyBtn">История</button>
-                <button class="btn btn-clear" id="clearBtn">Очистить</button>
+                <button class="btn" id="reverseBtn">Поменять</button>
+                <button class="btn" id="randomBtn">Рандом</button>
+                <button class="btn" id="copyBtn">Копировать</button>
+                <button class="btn" id="historyBtn">История</button>
+                <button class="btn" id="clearBtn">Очистить</button>
             </div>
 
             <div class="input-group">
-                <div class="label output-label">
-                    <span class="label-icon"></span>
-                    <span id="outputLabel">Бурмалдатский</span>
-                </div>
+                <div class="label" id="outputLabel">Бурмалдатский</div>
                 <textarea 
                     id="outputText" 
                     placeholder="Тут будет перевод..." 
@@ -517,20 +405,19 @@
 
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-value" id="charCount">0</div>
-                    <div class="stat-label">символов</div>
+                    <span class="stat-value" id="charCount">0</span>
+                    <span class="stat-label">символов</span>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value" id="wordCount">0</div>
-                    <div class="stat-label">слов</div>
+                    <span class="stat-value" id="wordCount">0</span>
+                    <span class="stat-label">слов</span>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ==================== СЛОВАРЬ БУРМАЛДАТСКОГО ====================
-        // Значения могут быть строкой или массивом строк (для случайного выбора)
+        // ==================== СЛОВАРЬ ====================
         const REPLACEMENTS = {
             "я": "ч", "мне": "мье", "мы": "мч", "кто": "кьо",
             "это": ["эьо", "э о", "эт о"],
@@ -635,7 +522,6 @@
             "значит": "ховечт",
             "немало": "немаво",
             "надо": "нажо",
-            "8795": "87⁹5",
             "прекрасно": "пркрусно",
             "просто": "промто",
             "понять": "повигар",
@@ -645,7 +531,6 @@
         };
 
         // ==================== ФРАЗОВЫЕ ПРАВИЛА ====================
-        // Проверяются ДО разбивки на слова. Регистр не важен.
         const PHRASES = [
             { from: "ты просто босс", to: "тыпровто бос с" },
             { from: "не бомж, а босс", to: "не бомж, п босс" },
@@ -673,7 +558,7 @@
             "бай", "bye", "гудбай", "goodbye",
             "до", "свидания", "свиданья",
             "салют", "салам", "ку", "хай", "шалом",
-            "вечер", "ночи", "утро", "день",
+            "вечер", "ночи", "утро",
             "приветствую", "приветик", "прив",
             "здрасте", "здрасьте", "дарова",
         ]);
@@ -729,7 +614,7 @@
             "ебать", "ебал", "ебала", "ебали", "ебёт", "ебу",
             "ебанутый", "ебанный", "еблан", "ебло",
             "блядь", "блять", "бля", "блядина", "блядство",
-            "сука", "суки", "сука", "суку",
+            "сука", "суки", "суку",
             "ахуеть", "ахуел", "ахуела", "охуеть", "охуел",
             "заебал", "заебала", "заебало", "заебали",
             "уебок", "уебан", "уёбище",
@@ -871,7 +756,7 @@
             }
         }
 
-        // ==================== ФУНКЦИИ ПЕРЕВОДА ====================
+        // ==================== ПЕРЕВОД ====================
         function isGreeting(word) { return GREETINGS.has(word.toLowerCase()); }
         function isQuestionWord(word) { return QUESTION_WORDS.has(word.toLowerCase()); }
         function isNoSuffixWord(word) { return NO_SUFFIX_WORDS.has(word.toLowerCase()); }
@@ -886,12 +771,10 @@
                 "ами", "ями", "ими", "ыми",
                 "ах", "ях",
             ];
-            
             const gerundEndings = ["авши", "евши", "учи", "ючи", "вши", "вша"];
             for (const ending of gerundEndings) {
                 if (lower.endsWith(ending)) return false;
             }
-            
             for (const ending of pluralEndings) {
                 if (lower.endsWith(ending) && lower.length > ending.length + 2) {
                     return true;
@@ -964,30 +847,25 @@
                 if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
                 return stripped + "ы";
             }
-
             if (wordLower.endsWith("ность") && wordLower.length > 6) {
                 let stripped = wordLower.slice(0, -5);
                 if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
                 return stripped;
             }
-
             if (wordLower.endsWith("ость") && wordLower.length > 5) {
                 let stripped = wordLower.slice(0, -4);
                 if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
                 return stripped;
             }
-
             return word;
         }
 
-        // Применяет фразовые правила (регистронезависимо)
         function applyPhrases(text) {
             let result = text;
             for (const { from, to } of PHRASES) {
                 const escaped = from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
                 const regex = new RegExp(escaped, 'gi');
                 result = result.replace(regex, (match) => {
-                    // Сохраняем регистр первой буквы
                     if (/^[А-ЯЁA-Z]/.test(match)) {
                         return to.charAt(0).toUpperCase() + to.slice(1);
                     }
@@ -998,7 +876,6 @@
         }
 
         function translateToBurmaldat(text) {
-            // Сначала фразовые правила
             const afterPhrases = applyPhrases(text);
             const tokens = afterPhrases.match(/[а-яА-ЯёЁa-zA-Z0-9]+|[^а-яА-ЯёЁa-zA-Z0-9]+/g) || [];
             return tokens.map(token => {
@@ -1009,7 +886,7 @@
             }).join('');
         }
 
-        // ==================== РАНДОМНЫЙ ТЕКСТ ====================
+        // ==================== РАНДОМ ====================
         const RANDOM_PHRASES = [
             "Привет, как дела? Что нового?",
             "Сегодня отличная погода, пойдем гулять!",
@@ -1048,16 +925,8 @@
         }
 
         function fillRandomText() {
-            const phrase = getRandomPhrase();
-            inputText.value = phrase;
+            inputText.value = getRandomPhrase();
             translateText();
-            
-            inputText.style.borderColor = '#fd79a8';
-            inputText.style.boxShadow = '0 0 40px rgba(253, 121, 168, 0.3)';
-            setTimeout(() => {
-                inputText.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                inputText.style.boxShadow = 'none';
-            }, 800);
         }
 
         // ==================== UI ====================
@@ -1077,15 +946,15 @@
                 directionArrow.classList.add('reversed');
                 inputLabel.textContent = 'Текст на бурмалдатском';
                 outputLabel.textContent = 'Русский перевод';
-                inputText.placeholder = 'Пиши по-бурмалдатски.';
-                outputText.placeholder = 'Тут будет русский';
+                inputText.placeholder = 'Пиши по-бурмалдатски...';
+                outputText.placeholder = 'Тут будет русский...';
             } else {
                 directionLabel.textContent = 'Русский → Бурмалдатский';
                 directionArrow.classList.remove('reversed');
                 inputLabel.textContent = 'Текст на русском';
                 outputLabel.textContent = 'Бурмалдатский';
-                inputText.placeholder = 'Пиши сюда.';
-                outputText.placeholder = 'Тут будет перевод';
+                inputText.placeholder = 'Пиши сюда...';
+                outputText.placeholder = 'Тут будет перевод...';
             }
         }
 
@@ -1148,11 +1017,10 @@
         function showNotification() {
             notification.classList.add('show');
             clearTimeout(notification._timeout);
-            notification._timeout = setTimeout(() => notification.classList.remove('show'), 2000);
-            if (navigator.vibrate) navigator.vibrate(50);
+            notification._timeout = setTimeout(() => notification.classList.remove('show'), 1800);
+            if (navigator.vibrate) navigator.vibrate(30);
         }
 
-        // Обработчики событий
         document.getElementById('reverseBtn').addEventListener('click', toggleReverse);
         document.getElementById('randomBtn').addEventListener('click', fillRandomText);
         document.getElementById('copyBtn').addEventListener('click', copyText);
@@ -1170,22 +1038,6 @@
             debounceTimer = setTimeout(translateText, 150);
         });
 
-        // Ripple эффект
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('pointerdown', function(e) {
-                const ripple = document.createElement('span');
-                ripple.className = 'ripple';
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-                this.appendChild(ripple);
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-
-        // Загрузка сохраненных данных
         try {
             const savedReversed = localStorage.getItem('burmaldat_reversed');
             if (savedReversed === 'true') {
@@ -1198,28 +1050,9 @@
 
         loadHistory();
 
-        // Частицы
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const count = window.innerWidth < 600 ? 15 : 30;
-            for (let i = 0; i < count; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const size = Math.random() * 6 + 2;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
-                container.appendChild(particle);
-            }
-        }
-        createParticles();
-
         if ('serviceWorker' in navigator) {
             const swCode = `
-                const CACHE_NAME = 'burmaldat-v17';
+                const CACHE_NAME = 'burmaldat-v18';
                 const ASSETS = [self.location.href];
                 self.addEventListener('install', e => {
                     e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
