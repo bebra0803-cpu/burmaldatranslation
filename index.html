@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta name="theme-color" content="#1e1e1e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Бурмалдат">
+    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%22%2C%22short_name%22%3A%22%D0%91%D1%83%D1%80%D0%BC%D0%B0%D0%BB%D0%B4%D0%B0%D1%82%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231e1e1e%22%2C%22theme_color%22%3A%22%233b82f6%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20100%20100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'20'%20fill%3D'%231e1e1e'%2F%3E%3Ctext%20x%3D'50'%20y%3D'65'%20font-size%3D'55'%20text-anchor%3D'middle'%20fill%3D'%23ffffff'%20font-family%3D'Arial'%3E%D0%91%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22100x100%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+    
+    <title>Бурмалдатский Переводчик</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            background: #1e1e1e;
+            color: #e5e5e5;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 20px;
+            -webkit-user-select: none;
+            user-select: none;
+            overscroll-behavior: none;
+        }
+
+        textarea, input { -webkit-user-select: text; user-select: text; }
+
+        .container {
+            width: 100%;
+            max-width: 720px;
+            background: #262626;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .header {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .direction-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .direction-text {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .direction-arrow {
+            color: #3b82f6;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .direction-arrow.reversed { transform: rotate(180deg); }
+
+        .translator-box {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .label {
+            color: #999;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3a;
+            background: #1a1a1a;
+            color: #e5e5e5;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.15s ease;
+            outline: none;
+            line-height: 1.5;
+        }
+
+        textarea:focus {
+            border-color: #3b82f6;
+        }
+
+        textarea::placeholder {
+            color: #555;
+        }
+
+        #outputText {
+            background: #1a1a1a;
+            color: #b8b8b8;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: 1px solid #3a3a3a;
+            background: #2a2a2a;
+            color: #e5e5e5;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            font-family: 'Inter', sans-serif;
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #333;
+            border-color: #444;
+        }
+
+        .btn:active {
+            background: #2a2a2a;
+        }
+
+        .stats {
+            display: flex;
+            gap: 24px;
+            margin-top: 8px;
+            padding-top: 16px;
+            border-top: 1px solid #333;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .stat-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e5e5e5;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-80px);
+            background: #3b82f6;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 1000;
+            transition: transform 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .copy-notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .history-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease, opacity 0.2s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .history-panel.open {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 16px;
+        }
+
+        .history-search {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #3a3a3a;
+            background: #1a1a1a;
+            color: #e5e5e5;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 10px;
+            outline: none;
+            transition: border-color 0.15s ease;
+        }
+
+        .history-search:focus {
+            border-color: #3b82f6;
+        }
+
+        .history-search::placeholder {
+            color: #555;
+        }
+
+        .history-list {
+            max-height: 340px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .history-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .history-list::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 3px;
+        }
+
+        .history-list::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 3px;
+        }
+
+        .history-item {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+        }
+
+        .history-item:hover {
+            border-color: #555;
+        }
+
+        .history-item .h-source {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .history-item .h-target {
+            color: #e5e5e5;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .history-item .h-time {
+            color: #555;
+            font-size: 10px;
+            align-self: flex-end;
+        }
+
+        .history-empty {
+            color: #666;
+            text-align: center;
+            padding: 24px;
+            font-size: 13px;
+        }
+
+        .history-count {
+            color: #666;
+            font-size: 11px;
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 12px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .title {
+                font-size: 20px;
+            }
+            .btn {
+                padding: 9px 10px;
+                font-size: 12px;
+                min-width: 60px;
+            }
+            .stats {
+                gap: 16px;
+            }
+            textarea {
+                font-size: 14px;
+                padding: 12px 14px;
+                min-height: 80px;
+            }
+        }
+
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(12px, env(safe-area-inset-left));
+                padding-right: max(12px, env(safe-area-inset-right));
+                padding-bottom: max(16px, env(safe-area-inset-bottom));
+                padding-top: max(16px, env(safe-area-inset-top));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="copy-notification" id="notification">Скопировано</div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Бурмалдатский переводчик</h1>
+            <div class="direction-indicator">
+                <span class="direction-text" id="directionLabel">Русский → Бурмалдатский</span>
+                <span class="direction-arrow" id="directionArrow">→</span>
+            </div>
+        </div>
+
+        <div class="translator-box">
+            <div class="input-group">
+                <div class="label" id="inputLabel">Текст на русском</div>
+                <textarea 
+                    id="inputText" 
+                    placeholder="Пиши сюда..."
+                    autocomplete="off"
+                    autocorrect="off"
+                    spellcheck="false"
+                ></textarea>
+            </div>
+
+            <div class="button-group">
+                <button class="btn" id="reverseBtn">Поменять</button>
+                <button class="btn" id="randomBtn">Рандом</button>
+                <button class="btn" id="copyBtn">Копировать</button>
+                <button class="btn" id="historyBtn">История</button>
+                <button class="btn" id="clearBtn">Очистить</button>
+            </div>
+
+            <div class="input-group">
+                <div class="label" id="outputLabel">Бурмалдатский</div>
+                <textarea 
+                    id="outputText" 
+                    placeholder="Тут будет перевод..." 
+                    readonly
+                ></textarea>
+            </div>
+
+            <div class="history-panel" id="historyPanel">
+                <input type="text" class="history-search" id="historySearch" placeholder="Поиск по истории...">
+                <div class="history-list" id="historyList">
+                    <div class="history-empty">История переводов пуста</div>
+                </div>
+                <div class="history-count" id="historyCount">Всего: 0</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="charCount">0</span>
+                    <span class="stat-label">символов</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="wordCount">0</span>
+                    <span class="stat-label">слов</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== СЛОВАРЬ ====================
+        const REPLACEMENTS = {
+            "я": "ч", "мне": "мье", "мы": "мч", "кто": "кьо",
+            "это": ["эьо", "э о", "эт о"],
+            "то": "ьо", "да": "дэ",
+            "лет": "тет", "сек": "чек", "пшо": "его",
+            "друг": "друн", "кот": "котость",
+            "телефон": "бурмалдфон", "заяц": "бурмалдаяц",
+            "птички": "бурмалдички", "зонтом": "зонтичностью",
+            "внук": "внуч", "дед": "дод",
+            "меллстрой": "меллстройность",
+            "фамилия": "фомилия", "максим": "еле говрящий Максим",
+            "эверест": "элевер", "чёрт": "тёлт", "черт": "тёлт",
+            "блин": ["бл*н", "бл*р"],
+            "тенге": "ценге", "манго": "mango",
+            "парни": "барни", "хогвартс": "fogвартс",
+            "роналдо": "рональжо", "жопа": "туз", "лайк": "лося",
+            "пена": "пема", "берёза": "береза", "береза": "береза",
+            "дуб": "дур", "мод": "мож",
+            "куколд": "Qcold", "обновление": "боновление",
+            "хомяк": "хамям",
+            "слов": "слоч",
+            "суп": "рамен",
+            "батя": "батч",
+            "мама": "мом",
+            "гулять": "БЛЯДЬ гулять",
+            "смеяться": "сметанаяйца",
+            "старался": "стараласт", "старалась": "стараласт",
+            "кинула": "кикула", "было": "блыо",
+            "нажимают": "поживают",
+            "закончиться": "закосица",
+            "писать": "пирать",
+            "писал": "пирал",
+            "пишут": "пирут",
+            "соглашусь": "соглашунь",
+            "пишу": "пизу",
+            "попутал": "порупал",
+            "важнее": "вишнее", "нишевая": "нищая",
+            "отлично": "бурмалда", "поганец": "понанец",
+            "правильно": "прыгилдо",
+            "естественно": "ест вест венно",
+            "ладно": "ларго",
+            "кажется": "калеттся",
+            "лучше": ["луме", "гучше"],
+
+            // ==================== НОВЫЕ СЛОВА (партия 1) ====================
+            "хохочу": "хохляу",
+            "можно": "могео",
+            "будет": "будел",
+            "босс": ["оосм", "госм", "гомс", "гсом", "Бро сс", "госмт", "долг", "додг", "готр", "бомс", "гочм", "юлосс"],
+            "пора": "пона",
+            "свету": "сверк",
+            "показать": "покозать",
+            "спасибо": "збозибо",
+            "язык": "ягыр",
+            "что": ["чло", "шьо"],
+            "понял": ["поряг", "поояг"],
+            "имба": "итба",
+            "боже": "бозе",
+            "написать": "напечь",
+            "мгм": "пгп",
+            "молодец": ["модожеде", "мододце"],
+            "т9": ["т0", ";0", ";9", "тз", "туз", "т7"],
+            "тут": "Туту",
+            "написано": "гаимчаннл",
+            "бля": "бдя",
+            "хоть": "хль",
+            "даже": ["длжээ", "доже"],
+            "вайб": "ыайл",
+            "именно": ["искенно", "икенно", "искнно", "исенно", "исеннл"],
+            "точнее": "ььчнен",
+            "короче": "копоче",
+            "марат": ["маат", "тарат"],
+            "первый": "превывы",
+            "раз": "рах",
+            "минимум": "мигируь",
+            "посидим": "посидис",
+            "мудреннее": "мдуреннее",
+            "помиловать": "помловать",
+            "пораньше": "поаньешь",
+            "попозже": "попщже",
+            "день": "денб",
+            "ура": "Уар",
+            "плохо": ["плов", "плозл"],
+            "школу": ["шкогу", "шкода"],
+            "хахаха": "хаха0",
+            "отказано": "откащано",
+            "чикенган": "чткенган",
+            "выделяться": "выделяперна",
+            "помню": "посню",
+            "какой": "кокой",
+            "картинки": "карьигу",
+            "слова": "флова",
+            "тоже": ["ТО№Е", "ТОЄЕ", "трже"],
+            "жиром": "жиоом",
+            "асмр": ["аиоономич", "астрономия"],
+            "чего": "чешо",
+            "заниматься": "замираться",
+            "сплю": "склю",
+            "пожалуйста": "пожилойста",
+            "вообще": ["вооб. Эть", "вообещ"],
+            "значит": "ховечт",
+            "немало": "немаво",
+            "надо": "нажо",
+            "прекрасно": ["пркрусно", "прерусно"],
+            "просто": "промто",
+            "понять": "повигар",
+            "почему": "пчив",
+            "мог": "мо7",
+            "моггнул": "мо77нул",
+
+            // ==================== НОВЫЕ СЛОВА (партия 2) ====================
+            "недавно": "недраз",
+            "экстримал": "экстримальчте",
+            "пойдёт": "аойдёт",
+            "пойдет": "аойдёт",
+            "палец": "паллца",
+            "хотела": "хотелка",
+            "школа": ["школость", "шкожа"],
+            "настолько": "настолдбо",
+            "никогда": "гикогда",
+            "заплыл": "залылв",
+            "заплыла": ["залыла", "залылв"],
+        };
+
+        // ==================== ФРАЗОВЫЕ ПРАВИЛА ====================
+        const PHRASES = [
+            { from: "ты просто босс", to: "тыпровто бос с" },
+            { from: "не бомж, а босс", to: "не бомж, п босс" },
+            { from: "леонардо роналжу коната", to: "лелнаожо рогалэу когаьа" },
+            { from: "генератор деградации", to: "генерато дегенеротл" },
+            { from: "это время войдет в историю", to: "этов ремня войжет в истлтрю" },
+            { from: "так держать", to: "так жержать" },
+            { from: "lvl up", to: "lvl ap" },
+        ];
+
+        // ==================== ОБРАТНЫЙ СЛОВАРЬ ====================
+        const REVERSE_REPLACEMENTS = {};
+        for (const [ru, bur] of Object.entries(REPLACEMENTS)) {
+            const variants = Array.isArray(bur) ? bur : [bur];
+            for (const v of variants) {
+                REVERSE_REPLACEMENTS[v.toLowerCase()] = ru;
+            }
+        }
+
+        const GREETINGS = new Set([
+            "привет", "пока", "здравствуй", "здравствуйте", "здарова",
+            "добрый", "доброе", "доброй", "доброго",
+            "спокойной", "спокойного",
+            "хелло", "hello", "hi", "hey", "йоу", "йо",
+            "бай", "bye", "гудбай", "goodbye",
+            "до", "свидания", "свиданья",
+            "салют", "салам", "ку", "хай", "шалом",
+            "вечер", "ночи", "утро",
+            "приветствую", "приветик", "прив",
+            "здрасте", "здрасьте", "дарова",
+        ]);
+
+        const QUESTION_WORDS = new Set([
+            "как", "какой", "какая", "какое", "какие",
+            "каков", "какова", "каково", "каковы",
+            "чей", "чья", "чьё", "чьи",
+            "кем", "ком", "кому", "кого",
+            "где", "куда", "откуда",
+            "когда", "зачем", "почему", "отчего",
+            "сколько", "насколько",
+            "который", "которая", "которое", "которые",
+        ]);
+
+        const NO_SUFFIX_WORDS = new Set([
+            "я", "ты", "он", "она", "оно", "мы", "вы", "они",
+            "меня", "тебя", "его", "её", "нас", "вас", "их",
+            "мне", "тебе", "ему", "ей", "нам", "вам", "им",
+            "мной", "тобой", "им", "ею", "нами", "вами", "ими",
+            "обо", "него", "неё", "них",
+            "мой", "твой", "свой", "наш", "ваш",
+            "моя", "твоя", "своя", "наша", "ваша",
+            "моё", "твоё", "своё", "наше", "ваше",
+            "мои", "твои", "свои", "наши", "ваши",
+            "этот", "эта", "эти", "этом", "этой", "этих",
+            "тот", "та", "то", "те", "том", "той", "тех",
+            "такой", "такая", "такое", "такие",
+            "столько", "тут", "там", "здесь", "вот", "вон",
+            "в", "на", "с", "по", "из", "от", "за", "до",
+            "об", "под", "над", "при", "про", "без", "для",
+            "к", "у", "о", "со", "во", "ко", "изо", "ото",
+            "перед", "через", "между", "ради", "вокруг",
+            "около", "после", "прежде", "против", "среди",
+            "и", "а", "но", "или", "либо", "ли", "бы", "же",
+            "что", "чтобы", "если", "когда", "пока",
+            "ведь", "хоть", "хотя", "раз", "словно", "будто",
+            "точно", "как", "так", "тоже", "также", "зато",
+            "однако", "притом", "причём", "итак", "потому",
+            "не", "ни", "да", "нет", "бы", "ли", "же", "уж",
+            "уже", "ещё", "всё", "все", "сам", "сама", "само", "сами",
+            "себе", "себя", "собой",
+            "был", "была", "было", "были",
+            "есть", "буду", "будет", "будут",
+            "бро", "типо", "типа", "ну", "короче",
+            "вообще", "ваще", "реально", "жесть",
+        ]);
+
+        const SWEAR_WORDS = new Set([
+            "хуй", "нахуй", "нахуя", "дохуя", "похуй", "похую",
+            "хуёвый", "хуёво", "хуйня", "хуйню", "хуйней",
+            "пизда", "пиздец", "пиздюк", "пиздеть", "пиздишь",
+            "ебать", "ебал", "ебала", "ебали", "ебёт", "ебу",
+            "ебанутый", "ебанный", "еблан", "ебло",
+            "блядь", "блять", "бля", "блядина", "блядство",
+            "сука", "суки", "суку",
+            "ахуеть", "ахуел", "ахуела", "охуеть", "охуел",
+            "заебал", "заебала", "заебало", "заебали",
+            "уебок", "уебан", "уёбище",
+            "гандон", "мудак", "мудила", "пидор", "пидорас",
+            "хуесос", "хуеплёт", "долбоёб",
+            "мразь", "тварь", "падла", "сволочь",
+            "выебон", "выебываться", "проебал", "проебать",
+            "наебать", "наебал", "разъебал", "разъебать",
+            "въебать", "въебал", "отъебать", "отъебал",
+            "подъебать", "подъебал", "съебать", "съебал",
+            "ебанько", "ебануться", "ебанулся",
+            "пизданутый", "пиздануть", "пизданул",
+            "хуярить", "хуярит", "хуярил",
+            "хули", "нах", "пох", "схуя", "схуяли",
+        ]);
+
+        const VERB_ENDINGS = [
+            "ть", "ти", "чь", "тся", "ться",
+            "ю", "ешь", "ет", "ем", "ете", "ют", "ут",
+            "ишь", "ит", "им", "ите", "ат", "ят",
+            "л", "ла", "ло", "ли",
+            "й", "йте", "ь", "ься", "ся",
+            "уй", "уйте", "ай", "айте", "ей", "ейте",
+            "овал", "евала", "овало", "овали",
+            "ывал", "ывала", "ывало", "ывали",
+            "ивал", "ивала", "ивало", "ивали",
+        ];
+
+        const PARTICIPLE_ENDINGS = [
+            "вший", "вшая", "вшее", "вшие",
+            "щий", "щая", "щее", "щие",
+            "нный", "нная", "нное", "нные",
+            "тый", "тая", "тое", "тые",
+            "ая", "яя", "ущий", "ющий",
+            "ав", "авши", "ев", "евши",
+            "я", "а", "учи", "ючи",
+        ];
+
+        let isReversed = false;
+
+        // ==================== ХЕЛПЕРЫ ====================
+        function pickRandom(value) {
+            if (Array.isArray(value)) {
+                return value[Math.floor(Math.random() * value.length)];
+            }
+            return value;
+        }
+
+        // ==================== ИСТОРИЯ ====================
+        let history = [];
+        const MAX_HISTORY = 50;
+        let historyFilter = '';
+
+        function loadHistory() {
+            try {
+                const saved = localStorage.getItem('burmaldat_history');
+                if (saved) {
+                    history = JSON.parse(saved);
+                    renderHistory();
+                }
+            } catch(e) {}
+        }
+
+        function saveHistory() {
+            try {
+                localStorage.setItem('burmaldat_history', JSON.stringify(history));
+            } catch(e) {}
+        }
+
+        function addToHistory(source, target) {
+            if (!source.trim() || !target.trim()) return;
+            if (history.length > 0 && history[0].source === source && history[0].target === target) return;
+            
+            history.unshift({
+                source: source,
+                target: target,
+                time: new Date().toLocaleString('ru-RU')
+            });
+            
+            if (history.length > MAX_HISTORY) {
+                history = history.slice(0, MAX_HISTORY);
+            }
+            
+            saveHistory();
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            const filtered = history.filter(item => {
+                const search = historyFilter.toLowerCase();
+                return item.source.toLowerCase().includes(search) || 
+                       item.target.toLowerCase().includes(search);
+            });
+            
+            if (filtered.length === 0) {
+                list.innerHTML = '<div class="history-empty">' + 
+                    (history.length === 0 ? 'История переводов пуста' : 'Ничего не найдено') + 
+                    '</div>';
+            } else {
+                list.innerHTML = filtered.map((item) => {
+                    const realIndex = history.indexOf(item);
+                    return `
+                        <div class="history-item" data-index="${realIndex}">
+                            <div class="h-source">${escapeHtml(item.source)}</div>
+                            <div class="h-target">${escapeHtml(item.target)}</div>
+                            <div class="h-time">${item.time}</div>
+                        </div>
+                    `;
+                }).join('');
+                
+                list.querySelectorAll('.history-item').forEach(el => {
+                    el.addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        const item = history[idx];
+                        if (item) {
+                            inputText.value = item.source;
+                            translateText();
+                            document.getElementById('historyPanel').classList.remove('open');
+                        }
+                    });
+                });
+            }
+            
+            document.getElementById('historyCount').textContent = 'Всего: ' + history.length;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function toggleHistory() {
+            const panel = document.getElementById('historyPanel');
+            panel.classList.toggle('open');
+            if (panel.classList.contains('open')) {
+                document.getElementById('historySearch').focus();
+            }
+        }
+
+        // ==================== ПЕРЕВОД ====================
+        function isGreeting(word) { return GREETINGS.has(word.toLowerCase()); }
+        function isQuestionWord(word) { return QUESTION_WORDS.has(word.toLowerCase()); }
+        function isNoSuffixWord(word) { return NO_SUFFIX_WORDS.has(word.toLowerCase()); }
+        function isSwearWord(word) { return SWEAR_WORDS.has(word.toLowerCase()); }
+
+        function isPlural(word) {
+            const lower = word.toLowerCase();
+            const pluralEndings = [
+                "ы", "и", "а", "я",
+                "ов", "ев", "ей", "ий", "ых", "их",
+                "ам", "ям",
+                "ами", "ями", "ими", "ыми",
+                "ах", "ях",
+            ];
+            const gerundEndings = ["авши", "евши", "учи", "ючи", "вши", "вша"];
+            for (const ending of gerundEndings) {
+                if (lower.endsWith(ending)) return false;
+            }
+            for (const ending of pluralEndings) {
+                if (lower.endsWith(ending) && lower.length > ending.length + 2) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function isVerb(word) {
+            const lower = word.toLowerCase();
+            for (const ending of VERB_ENDINGS) {
+                if (lower.endsWith(ending) && lower.length > ending.length + 1) return true;
+            }
+            if (lower.endsWith("ть") || lower.endsWith("ти") || lower.endsWith("чь")) return true;
+            if (lower.match(/[а-яё]+л[аои]?$/i) && lower.length > 3) return true;
+            if (lower.match(/[а-яё]+[юуеиая][тшщ]?$/i) && lower.length > 3) return true;
+            return false;
+        }
+
+        function isParticipleOrGerund(word) {
+            const lower = word.toLowerCase();
+            for (const ending of PARTICIPLE_ENDINGS) {
+                if (lower.endsWith(ending) && lower.length > ending.length + 1) return true;
+            }
+            return false;
+        }
+
+        function translateWord(word) {
+            const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
+            const wordLower = word.toLowerCase();
+
+            if (wordLower in REPLACEMENTS) {
+                let result = pickRandom(REPLACEMENTS[wordLower]);
+                if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
+                return result;
+            }
+
+            if (isGreeting(wordLower)) return isCapitalized ? word : wordLower;
+            if (isQuestionWord(wordLower)) return isCapitalized ? word : wordLower;
+            if (isNoSuffixWord(wordLower)) return isCapitalized ? word : wordLower;
+            if (isSwearWord(wordLower)) return isCapitalized ? word : wordLower;
+
+            if (isPlural(wordLower)) {
+                let stripped = wordLower.replace(/(ов|ев|ей|ий|ых|их|ам|ям|ами|ями|ими|ыми|ах|ях|ы|и|а|я)$/, '');
+                if (stripped.length < 2) stripped = wordLower;
+                const finalWord = stripped + "ности";
+                return isCapitalized ? finalWord.charAt(0).toUpperCase() + finalWord.slice(1) : finalWord;
+            }
+
+            if (isVerb(wordLower)) return isCapitalized ? word : wordLower;
+            if (isParticipleOrGerund(wordLower)) return isCapitalized ? word : wordLower;
+
+            const wordStripped = wordLower.replace(/[аеёиоуыэюяьъ]$/, '');
+            const finalWord = (wordStripped.length >= 2 ? wordStripped : wordLower) + "ность";
+            return isCapitalized ? finalWord.charAt(0).toUpperCase() + finalWord.slice(1) : finalWord;
+        }
+
+        function reverseTranslateWord(word) {
+            const isCapitalized = /^[А-ЯЁA-Z]/.test(word);
+            const wordLower = word.toLowerCase();
+
+            if (wordLower in REVERSE_REPLACEMENTS) {
+                let result = REVERSE_REPLACEMENTS[wordLower];
+                if (isCapitalized) result = result.charAt(0).toUpperCase() + result.slice(1);
+                return result;
+            }
+
+            if (wordLower.endsWith("ности") && wordLower.length > 6) {
+                let stripped = wordLower.slice(0, -4);
+                if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
+                return stripped + "ы";
+            }
+            if (wordLower.endsWith("ность") && wordLower.length > 6) {
+                let stripped = wordLower.slice(0, -5);
+                if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
+                return stripped;
+            }
+            if (wordLower.endsWith("ость") && wordLower.length > 5) {
+                let stripped = wordLower.slice(0, -4);
+                if (isCapitalized) stripped = stripped.charAt(0).toUpperCase() + stripped.slice(1);
+                return stripped;
+            }
+            return word;
+        }
+
+        // ==================== ГЛАВНАЯ ФУНКЦИЯ ПЕРЕВОДА ====================
+        // Фразы заменяются на PUA-маркеры, чтобы их не переводили повторно
+        function translateToBurmaldat(text) {
+            // 1. Заменяем фразы на маркеры
+            let result = text;
+            const phraseStore = [];
+            
+            for (const { from, to } of PHRASES) {
+                const escaped = from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(escaped, 'gi');
+                result = result.replace(regex, (match) => {
+                    let translated = to;
+                    if (/^[А-ЯЁA-Z]/.test(match)) {
+                        translated = to.charAt(0).toUpperCase() + to.slice(1);
+                    }
+                    // Маркер: \uE000 + символ из \uE100-\uE1FF + \uE001
+                    const marker = '\uE000' + String.fromCharCode(0xE100 + phraseStore.length) + '\uE001';
+                    phraseStore.push(translated);
+                    return marker;
+                });
+            }
+            
+            // 2. Переводим по словам
+            const tokens = result.match(/[а-яА-ЯёЁa-zA-Z0-9]+|[^а-яА-ЯёЁa-zA-Z0-9]+/g) || [];
+            const translated = tokens.map(token => {
+                if (/[а-яА-ЯёЁa-zA-Z0-9]/.test(token)) {
+                    return isReversed ? reverseTranslateWord(token) : translateWord(token);
+                }
+                return token;
+            }).join('');
+            
+            // 3. Возвращаем фразы на место
+            return translated.replace(/\uE000([\uE100-\uE1FF])\uE001/g, (_, ch) => 
+                phraseStore[ch.charCodeAt(0) - 0xE100] || ''
+            );
+        }
+
+        // ==================== РАНДОМ ====================
+        const RANDOM_PHRASES = [
+            "Привет, как дела? Что нового?",
+            "Сегодня отличная погода, пойдем гулять!",
+            "Я люблю учиться и узнавать новое.",
+            "Кто-то сегодня очень вкусно пахнет.",
+            "А давай сходим в кино на выходных?",
+            "Мой кот самый лучший на свете.",
+            "Вчера я приготовил вкусный ужин.",
+            "Нужно купить хлеб и молоко.",
+            "Лето — самое лучшее время года.",
+            "Мы все когда-нибудь станем взрослыми.",
+            "Ты слышал эту новую песню?",
+            "Иногда хочется просто лежать и ничего не делать.",
+            "Утром я выпил кофе и пошел на работу.",
+            "В нашем городе открылся новый парк.",
+            "Мне кажется, я видел тебя вчера.",
+            "Давайте устроим вечеринку в пятницу!",
+            "Счастье — это когда рядом близкие люди.",
+            "Я уже почти закончил этот проект.",
+            "Почему ты так долго не отвечал?",
+            "Надо научиться радоваться мелочам.",
+            "Книги — лучшие друзья человека.",
+            "Завтра будет важная встреча.",
+            "Спасибо за помощь, ты настоящий друг!",
+            "У меня есть идея получше.",
+            "Все будет хорошо, ты только верь.",
+            "Мне снился страшный сон про зомби.",
+            "На столе лежали книги и тетради.",
+            "Дети играли во дворе с собакой.",
+            "Сегодня я купил новый телефон.",
+            "Вкусный обед согрел меня после долгой прогулки."
+        ];
+
+        function getRandomPhrase() {
+            return RANDOM_PHRASES[Math.floor(Math.random() * RANDOM_PHRASES.length)];
+        }
+
+        function fillRandomText() {
+            inputText.value = getRandomPhrase();
+            translateText();
+        }
+
+        // ==================== UI ====================
+        const inputText = document.getElementById('inputText');
+        const outputText = document.getElementById('outputText');
+        const charCount = document.getElementById('charCount');
+        const wordCount = document.getElementById('wordCount');
+        const notification = document.getElementById('notification');
+        const directionLabel = document.getElementById('directionLabel');
+        const directionArrow = document.getElementById('directionArrow');
+        const inputLabel = document.getElementById('inputLabel');
+        const outputLabel = document.getElementById('outputLabel');
+
+        function updateDirectionUI() {
+            if (isReversed) {
+                directionLabel.textContent = 'Бурмалдатский → Русский';
+                directionArrow.classList.add('reversed');
+                inputLabel.textContent = 'Текст на бурмалдатском';
+                outputLabel.textContent = 'Русский перевод';
+                inputText.placeholder = 'Пиши по-бурмалдатски...';
+                outputText.placeholder = 'Тут будет русский...';
+            } else {
+                directionLabel.textContent = 'Русский → Бурмалдатский';
+                directionArrow.classList.remove('reversed');
+                inputLabel.textContent = 'Текст на русском';
+                outputLabel.textContent = 'Бурмалдатский';
+                inputText.placeholder = 'Пиши сюда...';
+                outputText.placeholder = 'Тут будет перевод...';
+            }
+        }
+
+        function translateText() {
+            const input = inputText.value;
+            const output = translateToBurmaldat(input);
+            outputText.value = output;
+            
+            const chars = input.replace(/\s/g, '').length;
+            const words = input.trim() ? input.trim().split(/\s+/).length : 0;
+            charCount.textContent = chars;
+            wordCount.textContent = words;
+
+            if (input.trim()) {
+                addToHistory(input, output);
+            }
+
+            try { localStorage.setItem('burmaldat_input', input); } catch(e) {}
+            try { localStorage.setItem('burmaldat_reversed', isReversed); } catch(e) {}
+        }
+
+        function toggleReverse() {
+            isReversed = !isReversed;
+            updateDirectionUI();
+            
+            const temp = inputText.value;
+            inputText.value = outputText.value;
+            outputText.value = temp;
+            
+            const input = inputText.value;
+            const chars = input.replace(/\s/g, '').length;
+            const words = input.trim() ? input.trim().split(/\s+/).length : 0;
+            charCount.textContent = chars;
+            wordCount.textContent = words;
+            
+            try { localStorage.setItem('burmaldat_input', inputText.value); } catch(e) {}
+            try { localStorage.setItem('burmaldat_reversed', isReversed); } catch(e) {}
+        }
+
+        function copyText() {
+            if (!outputText.value) return;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(outputText.value).then(showNotification);
+            } else {
+                outputText.select();
+                document.execCommand('copy');
+                showNotification();
+            }
+        }
+
+        function clearAll() {
+            inputText.value = '';
+            outputText.value = '';
+            charCount.textContent = '0';
+            wordCount.textContent = '0';
+            try { localStorage.removeItem('burmaldat_input'); } catch(e) {}
+            inputText.focus();
+        }
+
+        function showNotification() {
+            notification.classList.add('show');
+            clearTimeout(notification._timeout);
+            notification._timeout = setTimeout(() => notification.classList.remove('show'), 1800);
+            if (navigator.vibrate) navigator.vibrate(30);
+        }
+
+        document.getElementById('reverseBtn').addEventListener('click', toggleReverse);
+        document.getElementById('randomBtn').addEventListener('click', fillRandomText);
+        document.getElementById('copyBtn').addEventListener('click', copyText);
+        document.getElementById('clearBtn').addEventListener('click', clearAll);
+        document.getElementById('historyBtn').addEventListener('click', toggleHistory);
+
+        document.getElementById('historySearch').addEventListener('input', function() {
+            historyFilter = this.value;
+            renderHistory();
+        });
+
+        let debounceTimer;
+        inputText.addEventListener('input', function() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(translateText, 150);
+        });
+
+        try {
+            const savedReversed = localStorage.getItem('burmaldat_reversed');
+            if (savedReversed === 'true') {
+                isReversed = true;
+                updateDirectionUI();
+            }
+            const saved = localStorage.getItem('burmaldat_input');
+            if (saved) { inputText.value = saved; translateText(); }
+        } catch(e) {}
+
+        loadHistory();
+
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                const CACHE_NAME = 'burmaldat-v19';
+                const ASSETS = [self.location.href];
+                self.addEventListener('install', e => {
+                    e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
+                });
+                self.addEventListener('fetch', e => {
+                    e.respondWith(caches.match(e.request).then(cached => cached || fetch(e.request)));
+                });
+            `;
+            const blob = new Blob([swCode], {type: 'application/javascript'});
+            const swUrl = URL.createObjectURL(blob);
+            navigator.serviceWorker.register(swUrl).catch(() => {});
+        }
+    </script>
+</body>
+</html>
